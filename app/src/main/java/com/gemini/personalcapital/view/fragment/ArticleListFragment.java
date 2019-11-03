@@ -1,4 +1,4 @@
-package com.gemini.personalcapital.ui.fragment;
+package com.gemini.personalcapital.view.fragment;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.gemini.personalcapital.R;
 import com.gemini.personalcapital.constant.Constant;
 import com.gemini.personalcapital.model.ArticleItemList;
-import com.gemini.personalcapital.ui.Adapter.ArticleListAdapter;
+import com.gemini.personalcapital.view.Adapter.ArticleListAdapter;
 import com.gemini.personalcapital.util.DeviceManger;
 import com.gemini.personalcapital.viewmodel.FetchArticleViewModel;
 

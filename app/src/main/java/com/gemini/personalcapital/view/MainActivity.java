@@ -1,11 +1,12 @@
-package com.gemini.personalcapital;
+package com.gemini.personalcapital.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
-import com.gemini.personalcapital.ui.fragment.ArticleListFragment;
+import com.gemini.personalcapital.R;
+import com.gemini.personalcapital.view.fragment.ArticleListFragment;
 
 public class MainActivity extends AppCompatActivity {
 

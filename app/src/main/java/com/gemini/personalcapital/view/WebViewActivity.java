@@ -1,4 +1,4 @@
-package com.gemini.personalcapital;
+package com.gemini.personalcapital.view;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

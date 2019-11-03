@@ -1,4 +1,4 @@
-package com.gemini.personalcapital.ui.Adapter;
+package com.gemini.personalcapital.view.Adapter;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gemini.personalcapital.R;
-import com.gemini.personalcapital.WebViewActivity;
+import com.gemini.personalcapital.view.WebViewActivity;
 import com.gemini.personalcapital.model.Article;
 import com.gemini.personalcapital.model.ArticleItemList;
 import com.gemini.personalcapital.util.SettingsManager;
