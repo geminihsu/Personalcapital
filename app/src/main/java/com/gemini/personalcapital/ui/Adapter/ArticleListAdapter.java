@@ -27,6 +27,7 @@ import static com.gemini.personalcapital.constant.Constant.ITEM_DISPLAY_IMAGE_WI
 import static com.gemini.personalcapital.constant.Constant.ITEM_VIEW_TYPE_HEADER;
 import static com.gemini.personalcapital.constant.Constant.ITEM_VIEW_TYPE_ITEM;
 import static com.gemini.personalcapital.constant.Constant.WEBSITE_ADDRESS;
+import static com.gemini.personalcapital.constant.Constant.WEBSITE_TITLE;
 
 
 public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHolder> {
@@ -87,6 +88,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mContext, WebViewActivity.class);
+                i.putExtra(WEBSITE_TITLE, item.getTitle());
                 i.putExtra(WEBSITE_ADDRESS, item.getLink() + APPEND_URL);
                 mContext.startActivity(i);
             }

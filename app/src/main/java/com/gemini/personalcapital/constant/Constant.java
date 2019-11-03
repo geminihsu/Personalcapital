@@ -7,6 +7,7 @@ public class Constant {
     public static final String SEARCH_URL = WEBSITE_URL + "/feed/?cat=3,891,890,68,284";
     public static final String APPEND_URL = "?displayMobileNavigation=0";
     public static final String WEBSITE_ADDRESS = "website_address";
+    public static final String WEBSITE_TITLE = "article_title";
 
     //Different rows used to defined different device
     public static final int HANDSET_ROWS = 2;

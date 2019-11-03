@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import static com.gemini.personalcapital.constant.Constant.PROGRESS_LOADING;
 import static com.gemini.personalcapital.constant.Constant.WEBSITE_ADDRESS;
+import static com.gemini.personalcapital.constant.Constant.WEBSITE_TITLE;
 
 public class WebViewActivity extends AppCompatActivity {
     private ProgressDialog progressDialog_loading;
@@ -29,6 +30,7 @@ public class WebViewActivity extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         if (bundle != null) {
+            setTitle(bundle.getString(WEBSITE_TITLE));
             WebView theWebPage = new WebView(this);
             theWebPage.getSettings().setJavaScriptEnabled(true); // enable javascript
 
