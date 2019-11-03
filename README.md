@@ -1,4 +1,4 @@
-# Personalcapital
+# Personal Capital App
 
 
 This application show the list of RSS feed item from Personal Captial blog. It implementing Java + MVVM + Architecture components.
@@ -27,5 +27,4 @@ This application show the list of RSS feed item from Personal Captial blog. It i
 - [ ] constant : Define custome variable
 - [ ] network : The network api function call
 - [ ] util : DeviceManger used to check if the device is handset or tablet. RSSManger used to parse HTML tag and mapping to Article model object. SettingsManager used to deal with displaying images on the recycle view.
-
-
+- [ ] unitTest : unit test for model, viewmodel, repository 
