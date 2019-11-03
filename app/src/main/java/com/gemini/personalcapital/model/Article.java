@@ -2,7 +2,7 @@ package com.gemini.personalcapital.model;
 
 import android.net.Uri;
 
-public class Post {
+public class Article {
     private String title;
     private String comments;
     private String pubDate;

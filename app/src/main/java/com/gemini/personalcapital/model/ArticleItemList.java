@@ -1,13 +1,12 @@
 package com.gemini.personalcapital.model;
 
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 
-public class PostItemList extends ArrayList<Post> {
+public class ArticleItemList extends ArrayList<Article> {
 
     @Override
-    public boolean add(Post post) {
+    public boolean add(Article post) {
 
         if (post == null) {
             return false;
@@ -27,8 +26,8 @@ public class PostItemList extends ArrayList<Post> {
             return false;
         }
 
-        if (o instanceof Post) {
-            Post post = (Post) o;
+        if (o instanceof Article) {
+            Article post = (Article) o;
             for (int i = 0; i < this.size(); ++i) {
                 if (this.get(i).equals(post)) {
                     super.remove(i);
@@ -46,8 +45,8 @@ public class PostItemList extends ArrayList<Post> {
             return false;
         }
 
-        if (o instanceof Post) {
-            for (Post post : this) {
+        if (o instanceof Article) {
+            for (Article post : this) {
                 if (post.equals(o)) {
                     return true;
                 }

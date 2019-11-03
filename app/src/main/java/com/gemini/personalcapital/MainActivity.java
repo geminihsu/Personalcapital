@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
-import com.gemini.personalcapital.ui.fragment.PostListFragment;
+import com.gemini.personalcapital.ui.fragment.ArticleListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public Fragment createFragment() {
-        return PostListFragment.newInstance();
+        return ArticleListFragment.newInstance();
     }
 }

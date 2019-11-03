@@ -3,8 +3,8 @@ package com.gemini.personalcapital.util;
 import android.net.Uri;
 
 import com.gemini.personalcapital.constant.RSSXMLTag;
-import com.gemini.personalcapital.model.Post;
-import com.gemini.personalcapital.model.PostItemList;
+import com.gemini.personalcapital.model.Article;
+import com.gemini.personalcapital.model.ArticleItemList;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -23,8 +23,8 @@ import static com.gemini.personalcapital.constant.RSSXMLTag.TITLE;
 
 public class RSSManger {
 
-    public PostItemList fetchXML(final String urlString) {
-        PostItemList itemList = new PostItemList();
+    public ArticleItemList fetchXML(final String urlString) {
+        ArticleItemList itemList = new ArticleItemList();
         try {
             URL url = new URL(urlString);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -52,21 +52,21 @@ public class RSSManger {
         return itemList;
     }
 
-    public PostItemList parseXMLAndStoreIt(XmlPullParser myParser) {
+    public ArticleItemList parseXMLAndStoreIt(XmlPullParser myParser) {
         int event;
         String text = "";
-        PostItemList result = new PostItemList();
+        ArticleItemList result = new ArticleItemList();
         String currentTag = "";
 
         try {
             event = myParser.getEventType();
-            Post post = new Post();
+            Article post = new Article();
             while (event != XmlPullParser.END_DOCUMENT) {
                 String name = myParser.getName();
                 switch (event) {
                     case XmlPullParser.START_TAG:
                         if (name.equals("item")) {
-                            post = new Post();
+                            post = new Article();
                             currentTag = RSSXMLTag.IGNORETAG;
                         } else if (myParser.getName().equals(TITLE)) {
                             currentTag = TITLE;

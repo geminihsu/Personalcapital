@@ -1,5 +1,7 @@
 package com.gemini.personalcapital.constant;
-
+/*
+  The file used to define constant variable
+ */
 public class Constant {
     public static final String WEBSITE_URL = "https://www.personalcapital.com/blog";
     public static final String SEARCH_URL = WEBSITE_URL + "/feed/?cat=3,891,890,68,284";

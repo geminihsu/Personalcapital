@@ -1,5 +1,7 @@
 package com.gemini.personalcapital.constant;
-
+/*
+  The file used to define constant variable for HTML tag
+ */
 public class RSSXMLTag {
     final public static String TITLE = "title";
     final public static String COMMENTS = "comments";

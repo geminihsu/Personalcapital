@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gemini.personalcapital.R;
 import com.gemini.personalcapital.WebViewActivity;
-import com.gemini.personalcapital.model.Post;
-import com.gemini.personalcapital.model.PostItemList;
+import com.gemini.personalcapital.model.Article;
+import com.gemini.personalcapital.model.ArticleItemList;
 import com.gemini.personalcapital.util.SettingsManager;
 import com.squareup.picasso.Picasso;
 
@@ -29,17 +29,17 @@ import static com.gemini.personalcapital.constant.Constant.ITEM_VIEW_TYPE_ITEM;
 import static com.gemini.personalcapital.constant.Constant.WEBSITE_ADDRESS;
 
 
-public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.ViewHolder> {
+public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHolder> {
 
-    private final PostItemList mPostList;
+    private final ArticleItemList mPostList;
     private final FragmentActivity mContext;
 
 
-    public PostListAdapter(FragmentActivity context, PostItemList postItemList, View header) {
-        if (postItemList == null) {
-            mPostList = new PostItemList();
+    public ArticleListAdapter(FragmentActivity context, ArticleItemList articleItemList, View header) {
+        if (articleItemList == null) {
+            mPostList = new ArticleItemList();
         } else {
-            mPostList = postItemList;
+            mPostList = articleItemList;
         }
         mContext = context;
     }
@@ -59,7 +59,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        final Post item = mPostList.get(position);
+        final Article item = mPostList.get(position);
 
         holder.mTitleView.setText(item.getTitle());
         holder.mComment.setText(item.getComments());
@@ -69,6 +69,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.ViewHo
         if (getItemViewType(position) == ITEM_VIEW_TYPE_ITEM)
             holder.mDescription.setVisibility(View.GONE);
 
+
         SettingsManager settings = SettingsManager.getInstance(mContext);
         if (settings.isHighQualityPreview()) {
             Uri uri = item.getmCover();
@@ -77,12 +78,11 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.ViewHo
                 Picasso.get().load(result).into(holder.mCoverView);
             }
         } else {
-            Picasso.get().load(item.getImageUrl())
-                    .resize(ITEM_DISPLAY_IMAGE_WIDTH, ITEM_DISPLAY_IMAGE_HEIGHT)
-                    .into(holder.mCoverView);
+            Picasso.get().load(item.getImageUrl()).
+                    resize(ITEM_DISPLAY_IMAGE_WIDTH, ITEM_DISPLAY_IMAGE_HEIGHT).into(holder.mCoverView);
         }
 
-        //Pass the link url
+        //Pass the link url to another activity in order to open web page
         holder.mCardView_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

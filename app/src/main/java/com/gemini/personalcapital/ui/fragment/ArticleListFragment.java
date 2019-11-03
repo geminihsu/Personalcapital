@@ -22,21 +22,22 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gemini.personalcapital.R;
-import com.gemini.personalcapital.model.PostItemList;
-import com.gemini.personalcapital.ui.Adapter.PostListAdapter;
+import com.gemini.personalcapital.constant.Constant;
+import com.gemini.personalcapital.model.ArticleItemList;
+import com.gemini.personalcapital.ui.Adapter.ArticleListAdapter;
 import com.gemini.personalcapital.util.DeviceManger;
-import com.gemini.personalcapital.viewmodel.FetchViewModel;
+import com.gemini.personalcapital.viewmodel.FetchArticleViewModel;
 
 import static com.gemini.personalcapital.constant.Constant.PROGRESS_ERROR;
 import static com.gemini.personalcapital.constant.Constant.PROGRESS_LOADING;
 
 
-public class PostListFragment extends Fragment {
+public class ArticleListFragment extends Fragment {
     private ProgressDialog progressDialog_loading;
     private final int ACTIONBAR_MENU_ITEM_REFRESH = 0x0001;
 
     private RecyclerView mPostResults;
-    private FetchViewModel mViewModel;
+    private FetchArticleViewModel mViewModel;
 
     private boolean mStartup = true;
 
@@ -50,11 +51,11 @@ public class PostListFragment extends Fragment {
         mPostResults = view.findViewById(R.id.search_results);
 
         // set view model & observers
-        mViewModel = ViewModelProviders.of(getActivity()).get(FetchViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(FetchArticleViewModel.class);
 
-        mViewModel.getSearchResults().observe(getActivity(), new Observer<PostItemList>() {
+        mViewModel.getSearchResults().observe(getActivity(), new Observer<ArticleItemList>() {
             @Override
-            public void onChanged(PostItemList searchResults) {
+            public void onChanged(ArticleItemList searchResults) {
                 if (searchResults.isEmpty() && !mStartup) {
                      Toast.makeText(getActivity(), PROGRESS_ERROR, Toast.LENGTH_SHORT).show();
                 }
@@ -68,26 +69,15 @@ public class PostListFragment extends Fragment {
             }
         });
 
-        mViewModel.isSearching().observe(getActivity(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean isSearching) {
-                if (isSearching) {
-                    mPostResults.setVisibility(View.GONE);
-                } else {
-                    mPostResults.setVisibility(View.VISIBLE);
-                    mPostResults.requestFocus();
-                }
-            }
-        });
-
         // init recycler view
-        final PostListAdapter adapter = new PostListAdapter(getActivity(), mViewModel.getSearchResults().getValue(), view);
+        final ArticleListAdapter adapter = new ArticleListAdapter(getActivity(), mViewModel.getSearchResults().getValue(), view);
         adapter.setHasStableIds(true);
         mPostResults.setAdapter(adapter);
 
 
         final GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), DeviceManger.getRowsNum(getActivity()));
 
+        //layoutManager will take over to display the first article ​prominence​ ​at​ ​the​ ​top​ ​and​ ​display​ ​the​ ​image
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
@@ -100,13 +90,15 @@ public class PostListFragment extends Fragment {
             progressDialog_loading = ProgressDialog.show(getActivity(), "",
                     PROGRESS_LOADING, true);
         }
-        mViewModel.fetch();
+
+        //The network call be implemented on the view model
+        mViewModel.fetchArticle(Constant.SEARCH_URL);
 
         return view;
     }
 
-    public static PostListFragment newInstance() {
-        return new PostListFragment();
+    public static ArticleListFragment newInstance() {
+        return new ArticleListFragment();
     }
 
     @Override
@@ -129,7 +121,7 @@ public class PostListFragment extends Fragment {
                     progressDialog_loading = ProgressDialog.show(getActivity(), "",
                             PROGRESS_LOADING, true);
                 }
-                mViewModel.fetch();
+                mViewModel.fetchArticle(Constant.SEARCH_URL);
                 return true;
 
             default:
