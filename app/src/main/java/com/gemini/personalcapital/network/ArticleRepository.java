@@ -6,7 +6,7 @@ import com.gemini.personalcapital.util.RSSManger;
 public class ArticleRepository implements ArticleAPI {
 
     /*
-    * It will return the Articles list after RSSManger parse HTML tag
+    * It return the Articles list after RSSManger parse HTML tag
     * */
     @Override
     public ArticleItemList fetchArticles(String url) {
