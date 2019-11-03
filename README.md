@@ -3,7 +3,7 @@
 
 This application show the list of RSS feed item from Personal Captial blog. It implementing Java + MVVM + Architecture components.
 
-#Libray dependancy
+# Libray dependancy
 * AndroidX cardview
 * AndroidX recyclerview
 * com.squareup.picasso
