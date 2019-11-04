@@ -23,8 +23,8 @@ public class FetchArticleViewModel extends ViewModel {
 
     public void fetchArticle(String url) {
         this.url = url;
-        if (fetchViewModel_Thread == null)
-            fetchViewModel_Thread = new FetchViewModel_Thread();
+      
+        fetchViewModel_Thread = new FetchViewModel_Thread();
         fetchViewModel_Thread.start();
 
     }
